@@ -5,10 +5,14 @@
 <body style="margin:0;background:#0d0d1a;color:#fff;font-family:sans-serif">
 <script>
 (async()=>{
-  const u="https://cdn.jsdelivr.net/gh/cats3229433/Serverplex-Portable@main/ServerplexOS%20Portable.html";
+  // NEW: Using the GitHub repo you requested
+  const u="https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/index.html";
+
   try {
     const r=await fetch(u);
     const h=await r.text();
+
+    // Replace the entire document with the CDN version
     document.open();
     document.write(h);
     document.close();
