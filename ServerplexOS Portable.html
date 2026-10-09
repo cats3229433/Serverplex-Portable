@@ -5,13 +5,14 @@
 <body style="margin:0;background:#0d0d1a;color:#fff;font-family:sans-serif">
 <script>
 (async()=>{
-
-  const u="https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/index.html?v=" + Date.now();
-
+  const u="https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/index.html?purge";
   try {
     const r=await fetch(u);
-    const h=await r.text();
-
+    let h=await r.text();
+    h = h.replace(/src=['"](?!https?:\/\/)([^'"]+)['"]/g, 'src="https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/main/$1"');
+    h = h.replace(/href=['"](?!https?:\/\/)([^'"]+)['"]/g, 'href="https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/main/$1"');
+    h = h.replace(/frame\.src = '(?!https?:\/\/)([^']+)'/g, "frame.src = 'https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/main/$1'");
+    
     document.open();
     document.write(h);
     document.close();
