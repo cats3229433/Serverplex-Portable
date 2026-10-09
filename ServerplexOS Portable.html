@@ -6,18 +6,17 @@
 <script>
 (async()=>{
 
-  const u="https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/index.html";
+  const u="https://cdn.jsdelivr.net/gh/cats3229433/ServerplexOS/index.html?v=" + Date.now();
 
   try {
     const r=await fetch(u);
     const h=await r.text();
 
-
     document.open();
     document.write(h);
     document.close();
   } catch(e) {
-    document.body.innerHTML="Load Failed";
+    document.body.innerHTML="Load Failed<br>"+e;
   }
 })();
 </script>
